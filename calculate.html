@@ -1,0 +1,190 @@
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="preconnect" href="https://sapi.instabio.cc">
+  <link rel="dns-prefetch" href="https://sapi.instabio.cc">
+  <link rel="preconnect" href="https://api.instabio.cc">
+  <link rel="dns-prefetch" href="https://api.instabio.cc">
+  <link rel="preconnect" href="//bio.linkcdn.to">
+  <link rel="dns-prefetch" href="//bio.linkcdn.to">
+  <link rel="icon" href="https://bio.linkcdn.to/instabio.cc/favicon.ico">
+  <title>Milize.shop | Calculate</title>
+  <meta property="api:host" content="https://api.instabio.cc">
+  <meta property="api:anlhost" content="https://sapi.instabio.cc">
+  <meta name="description" content="Milize Shop🧸✨
+o รับ True wallet | Bank 
+o ส่งของทุกศุกร์~ตัดรอบ 22:00 📦
+o สินค้าพรี #prewithmilize พร้อมส่ง #milizeshop
+ー✉️ สั่งของ  dm หรือจิ้ม👇🏻">
+  <meta property="og:title" content="Milize.shop">
+  <meta property="og:description" content="Milize Shop🧸✨
+o รับ True wallet | Bank 
+o ส่งของทุกศุกร์~ตัดรอบ 22:00 📦
+o สินค้าพรี #prewithmilize พร้อมส่ง #milizeshop
+ー✉️ สั่งของ  dm หรือจิ้ม👇🏻">
+  <meta property="og:image" content="profile.jpg">
+  <meta property="og:image:width" content="320">
+  <meta property="og:image:height" content="320">
+  <meta property="og:type" content="website">
+  <meta property="fb:app_id" content="797683330612487">
+  <meta property="og:site_name" content="Milize.shop">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+  <style>
+    HTML::-webkit-scrollbar-track
+    {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      background-color: #F5F5F5;
+    }
+
+    HTML::-webkit-scrollbar
+    {
+      width: 6px;
+      background-color: #F5F5F5;
+    }
+
+    HTML::-webkit-scrollbar-thumb
+    {
+      background-color: #000000;
+    }
+    body {
+      background: #eff6ff url(https://wallpaperaccess.com/full/7057171.jpg);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      font-family: "Kanit", sans-serif !important;
+    }
+    .bg-white, .card {
+      background-color: rgba(255, 255, 255, 0.9) !important;
+    }
+  </style>
+  <script src="https://unpkg.com/vue@2.6.12/dist/vue.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-vue@2.21.2/dist/bootstrap-vue.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-light bg-white mb-3">
+    <span class="navbar-brand mb-0 p-2 h1">ระบบคำนวนราคาสินค้า</span>
+  </nav>
+  <div id="app" class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 col-12 mb-2">
+        <div class="card card-body">
+          <h4>เพิ่มราคาสินค้า</h4>
+          <input v-model="price" type="text" class="form-control" placeholder="ราคา"/>
+          <button class="btn btn-info mt-3 mb-2" @click="add()">เพิ่ม</button>
+          <button class="btn btn-secondary mt-2 mb-2" @click="removeall()">ล้าง</button>
+        </div>
+      </div>
+      <div class="col-md-10 col-12">
+        <div class="card card-body overflow-auto">
+          <b-table :items="items" :fields="fields" bordered>
+            <template #cell(id)="data">
+              {{ data.index + 1 }}
+            </template>
+            <template #cell(sell1)="data">
+              {{ sell1(data.item.price).toFixed(2) }}
+            </template>
+            <template #cell(customer1)="data">
+              {{ cus1(data.item.price).toFixed(2) }}
+            </template>
+            <template #cell(sell2)="data">
+              {{ sell2(data.item.price).toFixed(2) }}
+            </template>
+            <template #cell(customer2)="data">
+              {{ cus2(data.item.price).toFixed(2) }}
+            </template>
+            <template #cell(sell3)="data">
+              {{ sell3(data.item.price).toFixed(2) }}
+            </template>
+            <template #cell(customer3)="data">
+              {{ cus3(data.item.price).toFixed(2) }}
+            </template>
+            <template #cell(total)="data">
+              {{ total(data.item.price).toFixed(2) }}
+            </template>
+            <template #cell(manage)="data">
+              <button class="btn btn-danger" @click="remove(data.item.id)">ลบ</button>
+            </template>
+          </b-table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const app = {
+        el: '#app',
+        data (){
+            return {
+              index: 0,
+              price: '',
+              fields: [
+                { key: "id", label: "#", class: "text-left" },
+                { key: "price", label: "ราคาสินค้า", class: "text-center" },
+                { key: "sell1", label: "ราคาขาย 30%", class: "text-center" },
+                { key: "customer1", label: "กำไร 30%", class: "text-center" },
+                { key: "sell2", label: "ราคาขาย 20%", class: "text-center" },
+                { key: "customer2", label: "กำไร 20%", class: "text-center" },
+                { key: "sell3", label: "ราคาขาย 10%", class: "text-center" },
+                { key: "customer3", label: "กำไร 10%", class: "text-center" },
+                { key: "total", label: "ราคาขายสุทธิ", class: "text-center" },
+                { key: "manage", label: "แก้ไข", class: "text-center" },
+              ],
+              items: [
+              ],
+            }
+        },
+        mounted(){
+          window.addEventListener('keydown', (e) => {
+            if (e.key == 'Enter') {
+              this.add();
+            }
+            if (e.key == 'Delete') {
+              this.items.pop();
+            }
+          })
+        },
+        methods: {
+            add() {
+              if (Number(this.price) == 0) return;
+              this.index++;
+              this.items.push({ id: this.index, price: Number(this.price), customer1: 0, customer2: 0, customer3: 0, sell1: 0, sell2: 0, sell3: 0, total: 0 });
+              this.price = '';
+            },
+            remove(id) {
+              this.items = this.items.filter( obj => obj.id !== id);
+            },
+            removeall() {
+              this.index = 0;
+              this.items = [];
+            },
+            cus1(price) {
+              return (price/100) * 30;
+            },
+            cus2(price) {
+              return ((this.cus1(price) + price)/100) * 20;
+            },
+            cus3(price) {
+              return ((this.cus2(price) + (this.cus1(price) + price))/100) * 10;
+            },
+            sell1(price) {
+              return this.cus1(price) + price;
+            },
+            sell2(price) {
+              return this.cus2(price) + price;
+            },
+            sell3(price) {
+              return this.cus3(price) + price;
+            },
+            total(price) {
+              return this.cus3(price) + (this.cus2(price) + (this.cus1(price) + price));
+            }
+        }
+    };
+    new Vue(app);
+  </script>
+</body>
+</html>
