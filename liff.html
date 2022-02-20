@@ -50,7 +50,7 @@
               });
           }
       })();
-      $('.ql-editor p').html(JSON.stringify(location));
+      // $('.ql-editor p').html(JSON.stringify(location));
 
     })
     function getContexts() {
@@ -108,7 +108,7 @@
                 "direction": "ltr",
                 "hero": {
                     "type": "image",
-                    "url": "https://cdn.discordapp.com/attachments/810552675112452178/944837183368495144/IMG_1621.jpg",
+                    "url": "https://cdn.discordapp.com/attachments/810552675112452178/944880353213046834/IMG_1629.png",
                     "size": "full",
                     "aspectRatio": "4:3"
                 },
@@ -153,7 +153,7 @@
         if (!liff.isInClient()) {
           document.getElementById("btnLogOut").style.display = "block"
         }
-        // await liff.sendMessages(data);
+        await liff.sendMessages(data);
         navigator.clipboard.writeText(localStorage.getItem('LIFF_STORE:1656907476-EGmqqzgk:accessToken')).then(()=>{
           liff.closeWindow();
         })
