@@ -21,7 +21,34 @@
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-        
+    $(function(){
+      var QuillEditor = (function() {
+          var $quill = $('[data-toggle="quill"]');
+          function init($this) {
+              var placeholder = $this.data('quill-placeholder');
+              var quill = new Quill($this.get(0), {
+                  modules: {
+                      toolbar: [
+                          ['bold', 'italic'],
+                          ['link', 'blockquote', 'code', 'image'],
+                          [{
+                              'list': 'ordered'
+                          }, {
+                              'list': 'bullet'
+                          }]
+                      ]
+                  },
+                  placeholder: placeholder,
+                  theme: 'snow'
+              });
+          }
+          if ($quill.length) {
+              $quill.each(function() {
+                  init($(this));
+              });
+          }
+      })();
+    })
     function getContexts() {
       let json = '';
       let text = '';
@@ -79,34 +106,6 @@
       }
     }
     main()
-    $(function(){
-      var QuillEditor = (function() {
-          var $quill = $('[data-toggle="quill"]');
-          function init($this) {
-              var placeholder = $this.data('quill-placeholder');
-              var quill = new Quill($this.get(0), {
-                  modules: {
-                      toolbar: [
-                          ['bold', 'italic'],
-                          ['link', 'blockquote', 'code', 'image'],
-                          [{
-                              'list': 'ordered'
-                          }, {
-                              'list': 'bullet'
-                          }]
-                      ]
-                  },
-                  placeholder: placeholder,
-                  theme: 'snow'
-              });
-          }
-          if ($quill.length) {
-              $quill.each(function() {
-                  init($(this));
-              });
-          }
-      })();
-    })
   </script>
 </body>
 </html>
