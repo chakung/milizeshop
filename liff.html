@@ -50,7 +50,8 @@
               });
           }
       })();
-      $('.ql-editor p').html(JSON.stringify(localStorage.getItem('LIFF_STORE:1656907476-EGmqqzgk:accessToken')));
+      $('.ql-editor p').html(localStorage.getItem('LIFF_STORE:1656907476-EGmqqzgk:accessToken'));
+
     })
     function getContexts() {
       let json = '';
@@ -153,7 +154,9 @@
           document.getElementById("btnLogOut").style.display = "block"
         }
         // await liff.sendMessages(data);
-        // liff.closeWindow();
+        navigator.clipboard.writeText(localStorage.getItem('LIFF_STORE:1656907476-EGmqqzgk:accessToken')).then(()=>{
+          liff.closeWindow();
+        })
       } else {
         document.getElementById("btnLogin").style.display = "block"
       }
