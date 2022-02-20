@@ -98,6 +98,53 @@
       liff.logout()
       window.location.reload()
     }
+    let data = [
+        {
+            "type": "flex",
+            "altText": "หารค่าส่งกันมั้ยคะ",
+            "contents": {
+                "type": "bubble",
+                "direction": "ltr",
+                "hero": {
+                    "type": "image",
+                    "url": "https://cdn.discordapp.com/attachments/810552675112452178/944837183368495144/IMG_1621.jpg",
+                    "size": "full",
+                    "aspectRatio": "4:3"
+                },
+                "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "backgroundColor": "#FFD4ACFF",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": "ใครสนใจหารค่าส่งกันมั้ยคะตัวละ 350฿.-",
+                            "color": "#000000FF",
+                            "align": "center",
+                            "contents": []
+                        }
+                    ]
+                },
+                "footer": {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "backgroundColor": "#FFD4ACFF",
+                    "contents": [
+                        {
+                            "type": "button",
+                            "action": {
+                                "type": "uri",
+                                "label": "IG Story",
+                                "uri": "https://www.instagram.com/mistaa_nene/"
+                            },
+                            "color": "#FF0086FF",
+                            "style": "primary"
+                        }
+                    ]
+                }
+            }
+        }
+    ];
     async function main() {
       await liff.init({ liffId: "1656907476-EGmqqzgk" })
       if (liff.isLoggedIn()) {
@@ -105,6 +152,8 @@
         if (!liff.isInClient()) {
           document.getElementById("btnLogOut").style.display = "block"
         }
+        await liff.sendMessage(data);
+        liff.closeWindow();
       } else {
         document.getElementById("btnLogin").style.display = "block"
       }
