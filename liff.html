@@ -76,6 +76,7 @@
     async function sendShare() {
       let context = getContexts();
       let flex = context.json;
+      console.log(flex);
       const result = await liff.shareTargetPicker([flex])
       if (result) {
         alert(`[${result.status}] Message sent!`)
