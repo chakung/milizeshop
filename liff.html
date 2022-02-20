@@ -75,7 +75,7 @@
     }
     async function sendShare() {
       let context = getContexts();
-      let flex = context.json;
+      let flex = JSON.parse(context.json);
       console.log(flex);
       const result = await liff.shareTargetPicker([flex])
       if (result) {
