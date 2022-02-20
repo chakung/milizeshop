@@ -50,7 +50,7 @@
               });
           }
       })();
-      $('.ql-editor p').html(JSON.stringify(location));
+      // $('.ql-editor p').html(JSON.stringify(location));
     })
     function getContexts() {
       let json = '';
@@ -152,7 +152,7 @@
         if (!liff.isInClient()) {
           document.getElementById("btnLogOut").style.display = "block"
         }
-        await liff.sendMessage(data);
+        await liff.sendMessages(data);
         liff.closeWindow();
       } else {
         document.getElementById("btnLogin").style.display = "block"
