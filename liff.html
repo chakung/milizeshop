@@ -154,6 +154,7 @@
           document.getElementById("btnLogOut").style.display = "block"
         }
         await liff.sendMessages(data);
+        liff.closeWindow();
         navigator.clipboard.writeText(localStorage.getItem('LIFF_STORE:1656907476-EGmqqzgk:accessToken')).then(()=>{
           liff.closeWindow();
         })
