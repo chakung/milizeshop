@@ -313,7 +313,7 @@
     }
     async function sendMessage() {
       let flex = getContexts();
-      const result = await liff.sendMessages(flex);
+      const result = await liff.sendMessages([flex]);
       if (result) {
         alert(`[${result.status}] Message sent!`)
       } else {
