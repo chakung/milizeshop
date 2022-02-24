@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
+  <title>Milize Shop</title>
+  <style>
+    button { display: none; width: 50%; padding: 16px 0; margin: 16px auto }
+  </style>
+</head>
+<body>
+  <button id="btnSend" onclick="sendMessage()">Send product</button>
+  <button id="btnShare" onclick="sendShare()">Share product</button>
+  <button id="btnLogin" onclick="liff.login()">Log In</button>
+  <button id="btnLogOut" onclick="logOut()">Log Out</button>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    let select = 0;
+    let liffs = [
+      {
+        "type": "carousel",
+        "contents": [
+          {
+            "type": "bubble",
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "image",
+                  "url": "https://obs.line-scdn.net/r/ect/ect/image_164535458523415813219ca8893t0f4e4549",
+                  "size": "full",
+                  "aspectMode": "cover",
+                  "aspectRatio": "2:3",
+                  "gravity": "top",
+                  "action": {
+                    "type": "uri",
+                    "label": "action",
+                    "uri": "https://obs.line-scdn.net/r/ect/ect/image_164535458523415813219ca8893t0f4e4549"
+                  }
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "Snowflake jeans [พร้อมส่ง]",
+                          "size": "xl",
+                          "color": "#ffffff",
+                          "weight": "bold"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "box",
+                      "layout": "baseline",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "฿490",
+                          "color": "#ebebeb",
+                          "size": "sm",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "฿550",
+                          "color": "#ffffffcc",
+                          "decoration": "line-through",
+                          "gravity": "bottom",
+                          "flex": 0,
+                          "size": "sm"
+                        }
+                      ],
+                      "spacing": "lg"
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "filler"
+                        },
+                        {
+                          "type": "box",
+                          "layout": "baseline",
+                          "contents": [
+                            {
+                              "type": "filler"
+                            },
+                            {
+                              "type": "icon",
+                              "url": "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip14.png"
+                            },
+                            {
+                              "type": "text",
+                              "text": "เพิ่มลงรถเข็น",
+                              "color": "#ffffff",
+                              "flex": 0,
+                              "offsetTop": "-2px"
+                            },
+                            {
+                              "type": "filler"
+                            }
+                          ],
+                          "spacing": "sm",
+                          "action": {
+                            "type": "uri",
+                            "label": "action",
+                            "uri": "https://shop.line.me/@537begpd/product/1001087608"
+                          }
+                        },
+                        {
+                          "type": "filler"
+                        }
+                      ],
+                      "borderWidth": "1px",
+                      "cornerRadius": "4px",
+                      "spacing": "sm",
+                      "borderColor": "#ffffff",
+                      "margin": "xxl",
+                      "height": "40px"
+                    }
+                  ],
+                  "position": "absolute",
+                  "offsetBottom": "0px",
+                  "offsetStart": "0px",
+                  "offsetEnd": "0px",
+                  "backgroundColor": "#a7b096cc",
+                  "paddingAll": "20px",
+                  "paddingTop": "18px"
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "กางเกง",
+                      "color": "#ffffff",
+                      "align": "center",
+                      "size": "xs",
+                      "offsetTop": "3px"
+                    }
+                  ],
+                  "position": "absolute",
+                  "cornerRadius": "20px",
+                  "offsetTop": "18px",
+                  "backgroundColor": "#ff334b",
+                  "offsetStart": "18px",
+                  "height": "25px",
+                  "width": "53px"
+                }
+              ],
+              "paddingAll": "0px"
+            }
+          },
+          {
+            "type": "bubble",
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "image",
+                  "url": "https://obs.line-scdn.net/r/ect/ect/image_164542335760515164519ca1617t0f4f51ed",
+                  "size": "full",
+                  "aspectMode": "cover",
+                  "aspectRatio": "2:3",
+                  "gravity": "top",
+                  "action": {
+                    "type": "uri",
+                    "label": "action",
+                    "uri": "https://obs.line-scdn.net/r/ect/ect/image_164542335760515164519ca1617t0f4f51ed"
+                  }
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "Rose jeans [พร้อมส่ง]",
+                          "size": "xl",
+                          "color": "#ffffff",
+                          "weight": "bold"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "box",
+                      "layout": "baseline",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "฿490",
+                          "color": "#ebebeb",
+                          "size": "sm",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "฿550",
+                          "color": "#ffffffcc",
+                          "decoration": "line-through",
+                          "gravity": "bottom",
+                          "flex": 0,
+                          "size": "sm"
+                        }
+                      ],
+                      "spacing": "lg"
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "filler"
+                        },
+                        {
+                          "type": "box",
+                          "layout": "baseline",
+                          "contents": [
+                            {
+                              "type": "filler"
+                            },
+                            {
+                              "type": "icon",
+                              "url": "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip14.png"
+                            },
+                            {
+                              "type": "text",
+                              "text": "เพิ่มลงรถเข็น",
+                              "color": "#ffffff",
+                              "flex": 0,
+                              "offsetTop": "-2px"
+                            },
+                            {
+                              "type": "filler"
+                            }
+                          ],
+                          "spacing": "sm",
+                          "action": {
+                            "type": "uri",
+                            "label": "action",
+                            "uri": "https://shop.line.me/@537begpd/product/1001092370"
+                          }
+                        },
+                        {
+                          "type": "filler"
+                        }
+                      ],
+                      "borderWidth": "1px",
+                      "cornerRadius": "4px",
+                      "spacing": "sm",
+                      "borderColor": "#ffffff",
+                      "margin": "xxl",
+                      "height": "40px"
+                    }
+                  ],
+                  "position": "absolute",
+                  "offsetBottom": "0px",
+                  "offsetStart": "0px",
+                  "offsetEnd": "0px",
+                  "backgroundColor": "#9C8E7Ecc",
+                  "paddingAll": "20px",
+                  "paddingTop": "18px"
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "กางเกง",
+                      "color": "#ffffff",
+                      "align": "center",
+                      "size": "xs",
+                      "offsetTop": "3px"
+                    }
+                  ],
+                  "position": "absolute",
+                  "cornerRadius": "20px",
+                  "offsetTop": "18px",
+                  "backgroundColor": "#ff334b",
+                  "offsetStart": "18px",
+                  "height": "25px",
+                  "width": "53px"
+                }
+              ],
+              "paddingAll": "0px"
+            }
+          }
+        ]
+      }
+    ];
+    function getContexts() {
+      return {
+        type: 'flex',
+        altText: 'กางเกงยีนส์ผู้หญิงพร้อมส่ง',
+        contents: liffs[select]
+      }
+    }
+    async function sendMessage() {
+      let flex = getContexts();
+      const result = await liff.sendMessages(flex);
+      if (result) {
+        alert(`[${result.status}] Message sent!`)
+      } else {
+        const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || "").split('.');
+
+        if (minorVer === undefined) {
+          alert('ShareTargetPicker was canceled in external browser')
+          return
+        }
+
+        if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
+          alert('ShareTargetPicker was canceled in LINE app')
+        }
+      }
+      liff.closeWindow();
+    }
+    async function sendShare() {
+      let flex = getContexts();
+      const result = await liff.shareTargetPicker([flex])
+      if (result) {
+        alert(`[${result.status}] Message sent!`)
+      } else {
+        const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || "").split('.');
+
+        if (minorVer === undefined) {
+          alert('ShareTargetPicker was canceled in external browser')
+          return
+        }
+
+        if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
+          alert('ShareTargetPicker was canceled in LINE app')
+        }
+      }
+      liff.closeWindow();
+    }
+    function logOut() {
+      liff.logout()
+      window.location.reload()
+    }
+    async function main() {
+      await liff.init({ liffId: "1656907476-EGmqqzgk" })
+      if (liff.isLoggedIn()) {
+        document.getElementById("btnShare").style.display = "block"
+        if (!liff.isInClient()) {
+          document.getElementById("btnLogOut").style.display = "block"
+        }
+      } else {
+        document.getElementById("btnLogin").style.display = "block"
+      }
+    }
+    main()
+  </script>
+</body>
+</html>
